@@ -61,7 +61,7 @@ import kotlin.Unit;
 public class VoiceActivity extends AppCompatActivity {
 
     private static final String TAG = "VoiceActivity";
-    private static final String identity = "alice";
+    private static final String identity = "+447723187144";
     /*
      * You must provide the URL to the publicly accessible Twilio access token server route
      *
@@ -71,7 +71,7 @@ public class VoiceActivity extends AppCompatActivity {
      *
      * For example : https://myurl.io/accessToken.php
      */
-    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "TWILIO_ACCESS_TOKEN_SERVER_URL";
+    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "https://twilio0server.herokuapp.com/api/generate/token";
 
     private static final int MIC_PERMISSION_REQUEST_CODE = 1;
 
@@ -734,7 +734,7 @@ public class VoiceActivity extends AppCompatActivity {
      * Get an access token from your Twilio access token server
      */
     private void retrieveAccessToken() {
-        Ion.with(this).load(TWILIO_ACCESS_TOKEN_SERVER_URL + "?identity=" + identity)
+        Ion.with(this).load(TWILIO_ACCESS_TOKEN_SERVER_URL + "/" + identity)
                 .asString()
                 .setCallback((e, accessToken) -> {
                     if (e == null) {

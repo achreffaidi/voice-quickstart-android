@@ -48,7 +48,7 @@ import java.util.Locale;
 public class CustomDeviceActivity extends AppCompatActivity {
 
     private static final String TAG = "VoiceActivity";
-    private static final String identity = "alice";
+    private static final String identity = "+447723187144";
     /*
      * You must provide the URL to the publicly accessible Twilio access token server route
      *
@@ -58,7 +58,7 @@ public class CustomDeviceActivity extends AppCompatActivity {
      *
      * For example : https://myurl.io/accessToken.php
      */
-    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "TWILIO_ACCESS_TOKEN_SERVER_URL";
+    private static final String TWILIO_ACCESS_TOKEN_SERVER_URL = "http://twilio0server.herokuapp.com/api/generate/token";
 
     private static final int MIC_PERMISSION_REQUEST_CODE = 1;
 
@@ -276,7 +276,7 @@ public class CustomDeviceActivity extends AppCompatActivity {
         return (dialog, which) -> {
             // Place a call
             EditText contact = ((AlertDialog) dialog).findViewById(R.id.contact);
-            params.put("to", contact.getText().toString());
+            params.put("To", contact.getText().toString());
 
             ConnectOptions connectOptions = new ConnectOptions.Builder(accessToken)
                     .params(params)
